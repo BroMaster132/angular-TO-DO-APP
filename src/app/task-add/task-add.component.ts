@@ -20,14 +20,25 @@ export class TaskAddComponent {
    */
   note = new FormControl('');
 
+  /**
+  * Task status form field
+  */
+  status = new FormControl('');
+  /**
+  *  Task difficulty form field
+  */
+  difficulty = new FormControl('');
+
+
   constructor(private storage: TaskStorageService, private router: Router) {
   }
+
 
   /**
    * Create a task a redirect to the todo list
    */
   createTask() {
-    this.storage.add(this.title.value, this.note.value);
+    this.storage.add({id: null , title: this.title.value, note: this.note.value, status: this.status.value, difficulty: this.difficulty.value});
     this.router.navigate(['/tasks'])
   }
 }
